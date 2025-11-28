@@ -30,9 +30,7 @@ import com.togetherseatech.whaleshark.util.SaveCSV;
 import com.togetherseatech.whaleshark.util.SelectItems;
 import com.togetherseatech.whaleshark.util.TextFontUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -541,21 +539,18 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
                     TrainingDao Tdao = new TrainingDao(getContext());
                     TrainingsDao Tsdao = new TrainingsDao(getContext());
 
-                    SimpleDateFormat dateFormat = new SimpleDateFormat(
-                            "yyyyMMddhhmmss", Locale.getDefault());
-                    Date date = new Date();
                     ArrayList<TrainingInfo> TiList = Tdao.getDownloadData(LOGIN_CARRIER);
 
 //					Log.e("TwoButtonPopUpDialog","DOWNLOAD TiList : "+ TiList.size());
                     if (TiList.size() > 0) {
-                        filename = dateFormat.format(date) + "DownloadData.csv";
-                        sCSV = new SaveCSV(getContext(), filename);
+                        filename = "DownloadData.csv";
+                        sCSV = new SaveCSV(getContext(), filename);␊
                         ArrayList<String[]> downArray = sCSV.getDownload(TiList);
 //					Log.e("TwoButtonPopUpDialog","DOWNLOAD downArray : "+ downArray.size());
                         result = sCSV.save(downArray);
 //					Log.e("TwoButtonPopUpDialog","DOWNLOAD result : "+ result);
                         if (result > 0) {
-                            filename = dateFormat.format(date) + "DownloadData2.csv";
+                            filename = "DownloadData2.csv";
                             sCSV = new SaveCSV(getContext(), filename);
                             ArrayList<TrainingInfo> TiList2 = new ArrayList<>();
 
@@ -618,9 +613,9 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
                             msg = false;
                     }
 
-                    ArrayList<TrainingsInfo> TsiList3 = Tsdao.getDownloadData(LOGIN_CARRIER);
-                    if (TsiList3.size() > 0) {
-                        filename = dateFormat.format(date) + "DownloadData4.csv";
+                    ArrayList<TrainingsInfo> TsiList3 = Tsdao.getDownloadData(LOGIN_CARRIER);␊
+                    if (TsiList3.size() > 0) {␊
+                        filename = "DownloadData4.csv";
                         sCSV = new SaveCSV(getContext(), filename);
                         ArrayList<TrainingsInfo> TsiList4 = new ArrayList<>();
 
@@ -647,7 +642,7 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
 
                         result = sCSV.save(downArray4);
                         if (result > 0) {
-                            filename = dateFormat.format(date) + "DownloadData3.csv";
+                            filename = "DownloadData3.csv";
                             sCSV = new SaveCSV(getContext(), filename);
                             ArrayList<String[]> downArray3 = sCSV.getDownload3(TsiList3);
                             result = sCSV.save(downArray3);
@@ -714,14 +709,11 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
                     TrainingsDao Tsdao = new TrainingsDao(getContext());
                     MemberDao Mdao = new MemberDao(getContext());
                     MemberInfo VslMi = Mdao.getVslMember("ADMIN", "Administration");
-                    SimpleDateFormat dateFormat = new SimpleDateFormat(
-                            "yyyyMMddhhmmss", Locale.getDefault());
-                    Date date = new Date();
                     ArrayList<TrainingInfo> TiList = Tdao.getAllDownloadData(VslMi.getVsl_type());
 
 //					Log.e("TwoButtonPopUpDialog","DOWNLOAD TiList : "+ TiList.size());
                     if (TiList.size() > 0) {
-                        filename = dateFormat.format(date) + "AllDownloadData.csv";
+                        filename = "AllDownloadData.csv";
                         sCSV = new SaveCSV(getContext(), filename);
                         ArrayList<String[]> downArray = sCSV.getDownload(TiList);
 //					Log.e("TwoButtonPopUpDialog","DOWNLOAD downArray : "+ downArray.size());
@@ -767,9 +759,9 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
                             msg = false;
                     }
 
-                    ArrayList<TrainingsInfo> TsiList3 = Tsdao.getAllDownloadData(VslMi.getVsl_type());
-                    if (TsiList3.size() > 0) {
-                        filename = dateFormat.format(date) + "AllDownloadData4.csv";
+                    ArrayList<TrainingsInfo> TsiList3 = Tsdao.getAllDownloadData(VslMi.getVsl_type());␊
+                    if (TsiList3.size() > 0) {␊
+                        filename = "AllDownloadData4.csv";
                         sCSV = new SaveCSV(getContext(), filename);
                         ArrayList<TrainingsInfo> TsiList4 = new ArrayList<>();
 
@@ -796,7 +788,7 @@ public class TwoButtonPopUpDialog extends Dialog implements View.OnClickListener
 
                         result = sCSV.save(downArray4);
                         if (result > 0) {
-                            filename = dateFormat.format(date) + "AllDownloadData3.csv";
+                            filename = "AllDownloadData3.csv";
                             sCSV = new SaveCSV(getContext(), filename);
                             ArrayList<String[]> downArray3 = sCSV.getDownload3(TsiList3);
                             result = sCSV.save(downArray3);
