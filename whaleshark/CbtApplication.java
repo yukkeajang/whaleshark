@@ -7,16 +7,13 @@ import android.util.Log;
 
 import com.togetherseatech.whaleshark.util.CommonUtil;
 import com.togetherseatech.whaleshark.util.SelectItems;
+import com.togetherseatech.whaleshark.util.StartupCsvExporter;
+import com.togetherseatech.whaleshark.util.StartupDbExporter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-
-/**
- * Created by seonghak on 2017. 12. 8..
- */
 
 public class CbtApplication extends Application {
 
@@ -35,5 +32,11 @@ public class CbtApplication extends Application {
 //        editor.putBoolean("CLOSELICENSE", Closelicense);
         editor.putBoolean("CLOSELICENSE", true);
         editor.commit();*/
+        
+        StartupDbExporter exporter = new StartupDbExporter(getApplicationContext());
+        exporter.exportDatabase();
+
+        StartupCsvExporter csvExporter = new StartupCsvExporter(getApplicationContext());
+        csvExporter.exportPendingCsv();
     }
 }
