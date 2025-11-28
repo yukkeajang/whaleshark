@@ -57,8 +57,9 @@ public class SaveCSV {
             }
         }
         try {
-            FileWriter writer = new FileWriter(file);
-            for(int i = 0; i < list.size(); i++) {
+            FileWriter writer = new FileWriter(file, true);
+            int startIndex = (fileExists && list.size() > 0) ? 1 : 0;
+            for(int i = startIndex; i < list.size(); i++) {
                 String[] row = list.get(i);
                 for(int j = 0; j < row.length; j++) {
                     writer.write(row[j]);
