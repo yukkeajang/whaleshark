@@ -47,6 +47,7 @@ public class SaveCSV {
     }
 
     public int save(ArrayList<String[]> list){
+        boolean fileExists = file.exists() && file.length() > 0;
         if(!file.exists()){
             try {
                 file.createNewFile();
